@@ -3,6 +3,39 @@ import ReactDOM from 'react-dom/client';
 import './styles.css';
 import reportWebVitals from './reportWebVitals';
 
+const skillsArray = [
+  {
+    skill: "HTML+CSS",
+    level: "Advanced",
+    color: "brown"
+  },
+  {
+    skill: "Angular",
+    level: "Advanced",
+    color: "lightblue"
+  },
+  {
+    skill: "JavaScript",
+    level: "Advanced",
+    color: "pink"
+  },
+  {
+    skill: "Java Spring Boot",
+    level: "Intermediate",
+    color: "violet"
+  },
+  {
+    skill: "React",
+    level: "Beginner",
+    color: "beige"
+  },
+  {
+    skill: "CI/CD",
+    level: "Intermediate",
+    color: "teal"
+  },
+]
+
 function App() {
   return (
     <div className='card'>
@@ -33,21 +66,30 @@ function Intro() {
 }
 
 function SkillList() {
+  const skills = skillsArray;
+  console.log(skills)
+
   return (
     <div className='skill-list'>
-      <Skill skillName='Angular' color='lightblue' />
-      <Skill skillName='Spring Boot' color='violet' />
-      <Skill skillName='React' color='beige' />
-      <Skill skillName='CI/CD' color='teal' />
-      <Skill skillName='JavaScript' color='pink' />
+      {skills.map((skill) => (
+        <Skill
+          skillObj={skill}
+          key={skill.skill}
+        />
+      ))}
     </div>
   )
 }
 
-function Skill(props) {
+function Skill({ skillObj }) {
   return (
-    <div className='skill' style={{ backgroundColor: props.color }}>
-      <span>{props.skillName}</span>
+    <div className='skill' style={{ backgroundColor: skillObj.color }}>
+      <span>{skillObj.skill}</span>
+      <span>
+        {skillObj.level === "Advanced" && "😆"}
+        {skillObj.level === "Intermediate" && "😃"}
+        {skillObj.level === "Beginner" && "😊"}
+      </span>
     </div>
   )
 }
