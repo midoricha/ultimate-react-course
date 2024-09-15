@@ -59,7 +59,11 @@ function Counter() {
         incrementFn={incrementCount}
         decrementFn={decrementCount}
       />
-      <p>Today is {currentDate.toDateString()}</p>
+      <p> {count !== 0 && Math.abs(count)}
+        {count > 0 && ' days from now is '}
+        {count < 0 && ' days ago was '}
+        {count === 0 && 'Today is '}
+        {currentDate.toDateString()}</p>
     </>
   )
 }
